@@ -1,0 +1,295 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding: 8rem 0 4rem;
+  overflow: hidden;
+}
+
+/* Glow orbs */
+.hero__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.hero__orb--1 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(124,58,237,0.25), transparent 70%);
+  top: -10%; left: -15%;
+}
+
+.hero__orb--2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(6,182,212,0.2), transparent 70%);
+  top: 20%; right: -10%;
+}
+
+.hero__orb--3 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(236,72,153,0.15), transparent 70%);
+  bottom: 10%; left: 40%;
+}
+
+.hero__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Status badge */
+.hero__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 1rem;
+  border-radius: 100px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981;
+  font-size: 0.82rem;
+  font-weight: 500;
+  font-family: var(--font-mono);
+  width: fit-content;
+}
+
+.hero__status-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(16,185,129,0); }
+}
+
+/* Greeting */
+.hero__greeting {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-family: var(--font-mono);
+}
+
+/* Name */
+.hero__name {
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.hero__name-accent { display: inline-block; }
+
+/* Role */
+.hero__role-wrapper {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 500;
+}
+
+.hero__role-prefix {
+  color: var(--text-secondary);
+}
+
+.hero__role {
+  font-weight: 700;
+}
+
+/* Description */
+.hero__description {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+/* Actions */
+.hero__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+/* Socials */
+.hero__socials {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.hero__social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; height: 44px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.hero__social:hover {
+  color: var(--text-primary);
+  border-color: var(--violet);
+  background: rgba(124, 58, 237, 0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.2);
+}
+
+/* Visual / Avatar */
+.hero__visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.hero__avatar-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid;
+  animation: spin-slow linear infinite;
+}
+
+.hero__avatar-ring--outer {
+  width: 88%; height: 88%;
+  border-color: rgba(124,58,237,0.3);
+  animation-duration: 20s;
+}
+
+.hero__avatar-ring--inner {
+  width: 72%; height: 72%;
+  border-color: rgba(6,182,212,0.25);
+  border-style: dashed;
+  animation-duration: 12s;
+  animation-direction: reverse;
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+.hero__avatar {
+  width: 55%; height: 55%;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 80px rgba(124, 58, 237, 0.5), 0 0 40px rgba(6,182,212,0.2);
+  z-index: 1;
+}
+
+.hero__avatar-initials {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: white;
+  font-family: var(--font-mono);
+  letter-spacing: -0.05em;
+}
+
+/* Floating badges */
+.floating-badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 100px;
+  background: rgba(5, 5, 16, 0.9);
+  border: 1px solid var(--border);
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-primary);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  white-space: nowrap;
+  animation: float 3s ease-in-out infinite;
+}
+
+.floating-badge__dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.fb--react  { top: 10%;  right: 5%; animation-delay: 0s; }
+.fb--node   { bottom: 25%; right: 0; animation-delay: 0.5s; }
+.fb--python { bottom: 5%; left: 10%; animation-delay: 1s; }
+.fb--git    { top: 30%;  left: 0%;  animation-delay: 1.5s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* Scroll indicator */
+.hero__scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  text-decoration: none;
+  z-index: 1;
+  transition: var(--transition);
+}
+
+.hero__scroll:hover { color: var(--text-secondary); }
+
+.hero__scroll-icon {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+@media (max-width: 900px) {
+  .hero__container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero__description { max-width: 100%; }
+  .hero__actions { justify-content: center; }
+  .hero__socials { justify-content: center; }
+  .hero__greeting { justify-content: center; }
+  .hero__status { margin: 0 auto; }
+  .hero__visual { max-width: 280px; }
+  .fb--react  { top: 5%; right: 0; }
+  .fb--node   { bottom: 20%; right: -5%; }
+  .fb--python { bottom: 0; left: 5%; }
+  .fb--git    { top: 25%; left: -5%; }
+}

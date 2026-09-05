@@ -1,0 +1,10 @@
+/* App-level layout — nothing extra needed beyond index.css */
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}

@@ -1,0 +1,192 @@
+.about {
+  position: relative;
+  overflow: hidden;
+}
+
+.about__orb {
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6,182,212,0.1), transparent 70%);
+  filter: blur(80px);
+  right: -10%; top: 20%;
+  pointer-events: none;
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+/* Bio card */
+.about__bio-card {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about__avatar-wrap {
+  position: relative;
+  width: fit-content;
+}
+
+.about__avatar-big {
+  width: 80px; height: 80px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+}
+
+.about__avatar-glow {
+  position: absolute;
+  inset: -4px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-primary);
+  filter: blur(16px);
+  opacity: 0.4;
+  z-index: -1;
+}
+
+.about__bio-text h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.about__bio-role {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--violet-light);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.about__bio-text p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+}
+
+.about__interests-title {
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.75rem;
+}
+
+.about__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Right side */
+.about__right {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Facts grid */
+.about__facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.about__fact {
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+}
+
+.about__fact-icon {
+  color: var(--violet-light);
+  margin-bottom: 0.25rem;
+}
+
+.about__fact-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  line-height: 1;
+}
+
+.about__fact-label {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+/* Info card */
+.about__info-card {
+  padding: 1.75rem;
+}
+
+.about__info-title {
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.25rem;
+}
+
+.about__info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.about__info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.about__info-row:last-child { border-bottom: none; }
+
+.about__info-key {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.about__info-val {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .about__facts {
+    grid-template-columns: 1fr 1fr;
+  }
+}
