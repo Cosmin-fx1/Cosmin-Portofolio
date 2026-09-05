@@ -40,14 +40,14 @@ export const translations = {
       facts: [
         { label: 'Coffees consumed', value: '∞' },
         { label: 'Lines of code', value: '20k+' },
-        { label: 'Projects completed', value: '6+' },
-        { label: 'Technologies', value: '15+' },
+        { label: 'Projects completed', value: '16+' },
+        { label: 'Technologies', value: '7+' },
       ],
       infoTitle: 'Quick Info',
       info: [
         { label: 'Location', value: 'Faro, Portugal 🇵🇹' },
-        { label: 'Degree', value: 'BSc ESTI (ongoing)' },
-        { label: 'Diploma', value: 'CTeSP IT — Univ. Algarve 🎓' },
+        { label: 'Degree', value: 'Bachelors Degree ESTI (ongoing)' },
+        { label: 'Diploma', value: 'CTeSP IT - University of Algarve 🎓' },
         { label: 'Availability', value: 'Immediate' },
         { label: 'Languages', value: 'PT / RO / EN / ES' },
       ],
