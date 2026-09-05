@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowDown, Linkedin, Mail, Terminal, Sparkles } from 'lucide-react'
+import { useLanguage } from '../context/LanguageContext'
+import { translations } from '../i18n/translations'
 import './HeroSection.css'
 
 const fadeUp = {
@@ -16,6 +18,9 @@ const socials = [
 ]
 
 export default function HeroSection() {
+  const { lang } = useLanguage()
+  const t = translations[lang].hero
+
   return (
     <section id="hero" className="hero">
       {/* Decorative glow orbs */}
@@ -32,7 +37,7 @@ export default function HeroSection() {
             variants={fadeUp} initial="hidden" animate="show" custom={0}
           >
             <span className="hero__status-dot" />
-            <span>Disponível para oportunidades</span>
+            <span>{t.status}</span>
           </motion.div>
 
           {/* Greeting */}
@@ -41,7 +46,7 @@ export default function HeroSection() {
             variants={fadeUp} initial="hidden" animate="show" custom={1}
           >
             <Terminal size={16} />
-            Olá, eu sou
+            {t.greeting}
           </motion.p>
 
           {/* Name */}
@@ -58,8 +63,8 @@ export default function HeroSection() {
             className="hero__role-wrapper"
             variants={fadeUp} initial="hidden" animate="show" custom={3}
           >
-            <span className="hero__role-prefix">Técnico de TI &amp; </span>
-            <span className="hero__role gradient-text">Engenheiro de Software</span>
+            <span className="hero__role-prefix">{t.rolePrefix}</span>
+            <span className="hero__role gradient-text">{t.role}</span>
           </motion.div>
 
           {/* Description */}
@@ -67,9 +72,7 @@ export default function HeroSection() {
             className="hero__description"
             variants={fadeUp} initial="hidden" animate="show" custom={4}
           >
-            Recém-diplomado em CTeSP de Tecnologias de Informação e atual aluno da
-            Licenciatura em Engenharia de Sistemas e Tecnologias Informáticas.
-            Especializado em infraestruturas, desenvolvimento de software e soluções práticas no terreno.
+            {t.description}
           </motion.p>
 
           {/* CTA buttons */}
@@ -79,10 +82,10 @@ export default function HeroSection() {
           >
             <a href="#projetos" className="btn btn-primary">
               <Sparkles size={17} />
-              Ver Projetos
+              {t.cta_projects}
             </a>
             <a href="#contacto" className="btn btn-outline">
-              Entrar em Contacto
+              {t.cta_contact}
             </a>
           </motion.div>
 

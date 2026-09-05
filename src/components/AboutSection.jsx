@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Code2, Database, Globe, Cpu, Coffee } from 'lucide-react'
+import { useLanguage } from '../context/LanguageContext'
+import { translations } from '../i18n/translations'
 import './AboutSection.css'
 
 const fadeUp = {
@@ -14,17 +16,7 @@ const stagger = {
   show: { transition: { staggerChildren: 0.1 } }
 }
 
-const facts = [
-  { icon: Coffee, label: 'Cafés consumidos', value: '∞' },
-  { icon: Code2, label: 'Linhas de código', value: '20k+' },
-  { icon: Globe, label: 'Projetos concluídos', value: '6+' },
-  { icon: Database, label: 'Tecnologias', value: '15+' },
-]
-
-const interests = [
-  'Desenvolvimento Web', 'Infraestruturas', 'Bases de Dados', 'Redes',
-  'IA & Prompt Engineering', 'UI/UX Design', 'Hardware & Suporte', 'ERP & Sistemas'
-]
+const factIcons = [Coffee, Code2, Globe, Database]
 
 function useScrollInView() {
   const ref = useRef(null)
@@ -34,6 +26,8 @@ function useScrollInView() {
 
 export default function AboutSection() {
   const { ref, inView } = useScrollInView()
+  const { lang } = useLanguage()
+  const t = translations[lang].about
 
   return (
     <section id="sobre" className="section about">
@@ -47,10 +41,10 @@ export default function AboutSection() {
           animate={inView ? 'show' : 'hidden'}
         >
           <motion.p className="section-label" variants={fadeUp}>
-            Quem sou eu
+            {t.label}
           </motion.p>
           <motion.h2 className="section-title" variants={fadeUp}>
-            Sobre <span className="gradient-text">Mim</span>
+            {t.title} <span className="gradient-text">{t.titleAccent}</span>
           </motion.h2>
 
           <div className="about__grid">
@@ -64,26 +58,17 @@ export default function AboutSection() {
               <div className="about__bio-text">
                 <h3>Cosmin Ionuț</h3>
                 <p className="about__bio-role">
-                  <Cpu size={14} /> Técnico de TI / Engenheiro de Software
+                  <Cpu size={14} /> {t.role}
                 </p>
-                <p>
-                  Recém-diplomado em CTeSP de Tecnologias de Informação (Universidade do Algarve)
-                  e atual aluno da Licenciatura em Engenharia de Sistemas e Tecnologias Informáticas.
-                  Especializado em infraestruturas, hardware e construção de software.
-                </p>
-                <p>
-                  Combina experiência prática no desenvolvimento e programação com execução no terreno:
-                  manutenção de equipamentos, configuração de redes e instalação de sistemas (CCTV e hardware).
-                  Proativo, focado em troubleshooting rápido e com forte capacidade para aliar
-                  lógica de código às exigências práticas do trabalho de campo e laboratório.
-                </p>
+                <p>{t.bio1}</p>
+                <p>{t.bio2}</p>
               </div>
 
               <div className="about__interests">
-                <p className="about__interests-title">Interesses</p>
+                <p className="about__interests-title">{t.interestsTitle}</p>
                 <div className="about__tags">
-                  {interests.map(t => (
-                    <span key={t} className="tag">{t}</span>
+                  {t.interests.map(item => (
+                    <span key={item} className="tag">{item}</span>
                   ))}
                 </div>
               </div>
@@ -93,28 +78,29 @@ export default function AboutSection() {
             <div className="about__right">
               {/* Fact cards */}
               <motion.div className="about__facts" variants={stagger}>
-                {facts.map(({ icon: Icon, label, value }) => (
-                  <motion.div
-                    key={label}
-                    className="glass-card about__fact"
-                    variants={fadeUp}
-                  >
-                    <Icon size={22} className="about__fact-icon" />
-                    <span className="about__fact-value gradient-text">{value}</span>
-                    <span className="about__fact-label">{label}</span>
-                  </motion.div>
-                ))}
+                {t.facts.map(({ label, value }, i) => {
+                  const Icon = factIcons[i]
+                  return (
+                    <motion.div
+                      key={label}
+                      className="glass-card about__fact"
+                      variants={fadeUp}
+                    >
+                      <Icon size={22} className="about__fact-icon" />
+                      <span className="about__fact-value gradient-text">{value}</span>
+                      <span className="about__fact-label">{label}</span>
+                    </motion.div>
+                  )
+                })}
               </motion.div>
 
               {/* Info card */}
               <motion.div className="glass-card about__info-card" variants={fadeUp}>
-                <h4 className="about__info-title">Informação Rápida</h4>
+                <h4 className="about__info-title">{t.infoTitle}</h4>
                 <ul className="about__info-list">
-                  <InfoRow label="Localização" value="Faro, Portugal 🇵🇹" />
-                  <InfoRow label="Formação" value="Licenciatura ESTI (em curso)" />
-                  <InfoRow label="Diploma" value="CTeSP TI — Univ. Algarve 🎓" />
-                  <InfoRow label="Disponibilidade" value="Imediata" />
-                  <InfoRow label="Línguas" value="PT / RO / EN / ES" />
+                  {t.info.map(({ label, value }) => (
+                    <InfoRow key={label} label={label} value={value} />
+                  ))}
                 </ul>
               </motion.div>
             </div>

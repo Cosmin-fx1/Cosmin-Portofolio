@@ -1,4 +1,5 @@
 import './App.css'
+import { LanguageProvider } from './context/LanguageContext'
 import ParticleBackground from './components/ParticleBackground'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
@@ -11,7 +12,7 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <>
+    <LanguageProvider>
       <ParticleBackground />
       <Navbar />
       <main>
@@ -23,6 +24,6 @@ export default function App() {
         <ContactSection />
       </main>
       <Footer />
-    </>
+    </LanguageProvider>
   )
 }

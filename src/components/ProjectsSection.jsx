@@ -1,77 +1,9 @@
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ExternalLink, Github, Star, Globe } from 'lucide-react'
+import { Github, Star, Globe } from 'lucide-react'
+import { useLanguage } from '../context/LanguageContext'
+import { translations } from '../i18n/translations'
 import './ProjectsSection.css'
-
-const projects = [
-  {
-    id: 1,
-    title: 'Portfólio Pessoal',
-    description:
-      'Este site! Um portfólio moderno, construído com React e Vite, com animações fluídas, design em glassmorphism e experiência de utilizador premium.',
-    tags: ['React', 'Vite', 'Framer Motion', 'CSS'],
-    github: 'https://github.com/',
-    live: '#',
-    featured: true,
-    color: '#7c3aed',
-    icon: '🚀',
-  },
-  {
-    id: 2,
-    title: 'Gestão de Finanças Pessoais',
-    description:
-      'Sistema de gestão de finanças pessoais com múltiplas web apps desenvolvidas com auxílio de Inteligência Artificial. Base de dados em Supabase (PostgreSQL) e SQL Server da Microsoft, com dashboards interativos e relatórios automáticos.',
-    tags: ['Supabase', 'PostgreSQL', 'SQL Server', 'IA', 'Web Apps'],
-    github: null,
-    live: null,
-    color: '#06b6d4',
-    icon: '💰',
-  },
-  {
-    id: 3,
-    title: 'MediaMinTech',
-    description:
-      'Website profissional desenvolvido para a empresa MediaMinTech, com foco em soluções tecnológicas e media. Construído com Durable, plataforma de criação de sites com IA.',
-    tags: ['Durable', 'IA', 'Web Design', 'SEO', 'DNS', 'Domínios', 'Indexação'],
-    github: null,
-    live: 'https://mediamintech.com/',
-    color: '#10b981',
-    icon: '📡',
-  },
-  {
-    id: 4,
-    title: 'Cantinho Curioso',
-    description:
-      'Loja online e site institucional para o Cantinho Curioso, desenvolvido com Durable. Design apelativo e foco na experiência do utilizador para apresentar os produtos e serviços.',
-    tags: ['Durable', 'IA', 'E-commerce', 'Web Design', 'SEO', 'DNS', 'Domínios', 'Indexação', 'Gestão'],
-    github: null,
-    live: 'https://www.cantinhocurioso.pt/',
-    color: '#f59e0b',
-    icon: '🐾',
-  },
-  {
-    id: 5,
-    title: 'Hammer J Construções',
-    description:
-      'Website profissional para empresa de construção civil, desenvolvido com Durable. Apresentação dos serviços, portfólio de obras e contacto direto com o cliente.',
-    tags: ['Durable', 'IA', 'Web Design', 'SEO', 'DNS', 'Domínios', 'Indexação'],
-    github: null,
-    live: 'https://hammerjconstrucoes.com/',
-    color: '#f97316',
-    icon: '🔨',
-  },
-  {
-    id: 6,
-    title: 'noFinanças',
-    description:
-      'Aplicação de gestão de finanças pessoais com base de dados Supabase, desenvolvida com recurso a Inteligência Artificial. Funcionalidades de controlo de despesas, receitas, orçamentos e relatórios financeiros detalhados.',
-    tags: ['Supabase', 'PostgreSQL', 'IA', 'Finanças Pessoais'],
-    github: null,
-    live: null,
-    color: '#ec4899',
-    icon: '📊',
-  },
-]
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -86,6 +18,8 @@ const stagger = {
 export default function ProjectsSection() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
+  const { lang } = useLanguage()
+  const t = translations[lang].projects
 
   return (
     <section id="projetos" className="section projects">
@@ -97,18 +31,18 @@ export default function ProjectsSection() {
           initial="hidden"
           animate={inView ? 'show' : 'hidden'}
         >
-          <motion.p className="section-label" variants={fadeUp}>O que construí</motion.p>
+          <motion.p className="section-label" variants={fadeUp}>{t.label}</motion.p>
           <motion.h2 className="section-title" variants={fadeUp}>
-            Meus <span className="gradient-text">Projetos</span>
+            {t.title} <span className="gradient-text">{t.titleAccent}</span>
           </motion.h2>
           <motion.p className="section-subtitle" variants={fadeUp}>
-            Uma seleção de projetos que desenvolvi ao longo do curso, por iniciativa própria e para clientes reais.
+            {t.subtitle}
           </motion.p>
 
           <div className="projects__grid">
-            {projects.map((project) => (
+            {t.items.map((project) => (
               <motion.div key={project.id} variants={fadeUp}>
-                <ProjectCard project={project} />
+                <ProjectCard project={project} t={t} />
               </motion.div>
             ))}
           </div>
@@ -118,7 +52,7 @@ export default function ProjectsSection() {
   )
 }
 
-function ProjectCard({ project }) {
+function ProjectCard({ project, t }) {
   const [tilt, setTilt] = useState({ x: 0, y: 0 })
   const [hovered, setHovered] = useState(false)
   const cardRef = useRef(null)
@@ -164,18 +98,18 @@ function ProjectCard({ project }) {
 
         {project.featured && (
           <span className="project-card__featured">
-            <Star size={12} fill="currentColor" /> Destaque
+            <Star size={12} fill="currentColor" /> {t.featured}
           </span>
         )}
 
         <div className="project-card__links">
           {project.live && (
-            <a href={project.live} target="_blank" rel="noopener noreferrer" className="project-card__link" title="Ver Site">
+            <a href={project.live} target="_blank" rel="noopener noreferrer" className="project-card__link" title={t.viewSite}>
               <Globe size={16} />
             </a>
           )}
           {project.github && (
-            <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-card__link" title="GitHub">
+            <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-card__link" title={t.viewGithub}>
               <Github size={16} />
             </a>
           )}

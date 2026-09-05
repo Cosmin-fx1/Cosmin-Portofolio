@@ -1,19 +1,23 @@
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
+import { useLanguage } from '../context/LanguageContext'
+import { translations } from '../i18n/translations'
 import './Navbar.css'
 
-const links = [
-  { href: '#sobre', label: 'Sobre' },
-  { href: '#competencias', label: 'Competências' },
-  { href: '#projetos', label: 'Projetos' },
-  { href: '#educacao', label: 'Educação' },
-  { href: '#contacto', label: 'Contacto' },
-]
-
 export default function Navbar() {
+  const { lang, toggle } = useLanguage()
+  const t = translations[lang].nav
   const [scrolled, setScrolled] = useState(false)
   const [progress, setProgress] = useState(0)
   const [open, setOpen] = useState(false)
+
+  const links = [
+    { href: '#sobre', label: t.about },
+    { href: '#competencias', label: t.skills },
+    { href: '#projetos', label: t.projects },
+    { href: '#educacao', label: t.education },
+    { href: '#contacto', label: t.contact },
+  ]
 
   useEffect(() => {
     const onScroll = () => {
@@ -44,8 +48,20 @@ export default function Navbar() {
             ))}
           </ul>
 
+          {/* Language toggle */}
+          <button
+            className="lang-toggle"
+            onClick={toggle}
+            aria-label="Toggle language"
+            title={lang === 'en' ? 'Switch to Portuguese' : 'Mudar para Inglês'}
+          >
+            <span className={lang === 'en' ? 'lang-toggle__active' : ''}>EN</span>
+            <span className="lang-toggle__sep">|</span>
+            <span className={lang === 'pt' ? 'lang-toggle__active' : ''}>PT</span>
+          </button>
+
           <a href="#contacto" className="btn btn-primary navbar__cta">
-            Contactar
+            {t.cta}
           </a>
 
           <button
@@ -75,8 +91,17 @@ export default function Navbar() {
             {l.label}
           </a>
         ))}
+        <button
+          className="lang-toggle lang-toggle--mobile"
+          onClick={toggle}
+          aria-label="Toggle language"
+        >
+          <span className={lang === 'en' ? 'lang-toggle__active' : ''}>EN</span>
+          <span className="lang-toggle__sep">|</span>
+          <span className={lang === 'pt' ? 'lang-toggle__active' : ''}>PT</span>
+        </button>
         <a href="#contacto" className="btn btn-primary" style={{ marginTop: '1rem' }} onClick={() => setOpen(false)}>
-          Contactar
+          {t.cta}
         </a>
       </div>
     </>

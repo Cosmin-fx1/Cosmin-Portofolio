@@ -1,26 +1,9 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Mail, Linkedin, MessageCircle, Send, MapPin } from 'lucide-react'
+import { useLanguage } from '../context/LanguageContext'
+import { translations } from '../i18n/translations'
 import './ContactSection.css'
-
-const socials = [
-  {
-    icon: Linkedin,
-    label: 'LinkedIn',
-    handle: 'Cosmin Ionuț',
-    href: 'https://www.linkedin.com/in/cosmin-ionut-ciocan/',
-    color: '#0ea5e9',
-    bg: 'rgba(14, 165, 233, 0.08)',
-  },
-  {
-    icon: Mail,
-    label: 'Email',
-    handle: 'cosminfx@gmail.com',
-    href: 'mailto:cosminfx@gmail.com',
-    color: '#a855f7',
-    bg: 'rgba(168, 85, 247, 0.08)',
-  },
-]
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -35,6 +18,27 @@ const stagger = {
 export default function ContactSection() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
+  const { lang } = useLanguage()
+  const t = translations[lang].contact
+
+  const socials = [
+    {
+      icon: Linkedin,
+      label: 'LinkedIn',
+      handle: 'Cosmin Ionuț',
+      href: 'https://www.linkedin.com/in/cosmin-ionut-ciocan/',
+      color: '#0ea5e9',
+      bg: 'rgba(14, 165, 233, 0.08)',
+    },
+    {
+      icon: Mail,
+      label: 'Email',
+      handle: 'cosminfx@gmail.com',
+      href: 'mailto:cosminfx@gmail.com',
+      color: '#a855f7',
+      bg: 'rgba(168, 85, 247, 0.08)',
+    },
+  ]
 
   return (
     <section id="contacto" className="section contact">
@@ -48,9 +52,9 @@ export default function ContactSection() {
           initial="hidden"
           animate={inView ? 'show' : 'hidden'}
         >
-          <motion.p className="section-label" variants={fadeUp}>Vamos falar</motion.p>
+          <motion.p className="section-label" variants={fadeUp}>{t.label}</motion.p>
           <motion.h2 className="section-title" variants={fadeUp}>
-            Entre em <span className="gradient-text">Contacto</span>
+            {t.title} <span className="gradient-text">{t.titleAccent}</span>
           </motion.h2>
 
           <div className="contact__layout">
@@ -59,26 +63,18 @@ export default function ContactSection() {
               <div className="contact__cta-icon">
                 <MessageCircle size={32} />
               </div>
-              <h3>Interessado em trabalhar juntos?</h3>
-              <p>
-                Estou à procura de <strong>emprego na área de TI</strong> — desenvolvimento de software,
-                infraestruturas ou suporte técnico. Também estou disponível para
-                <strong> trabalhos freelance e projetos criativos</strong>: websites, design digital,
-                multimédia ou qualquer desafio que combine tecnologia e criatividade.
-              </p>
-              <p>
-                Se tens uma vaga, um projeto interessante ou simplesmente queres trocar ideias,
-                não hesites em entrar em contacto!
-              </p>
+              <h3>{t.cta_title}</h3>
+              <p dangerouslySetInnerHTML={{ __html: t.cta_p1 }} />
+              <p>{t.cta_p2}</p>
 
               <div className="contact__meta">
                 <span className="contact__meta-item">
                   <MapPin size={14} />
-                  Faro, Portugal
+                  {t.location}
                 </span>
                 <span className="contact__meta-item">
                   <span className="contact__status-dot" />
-                  Disponível
+                  {t.available}
                 </span>
               </div>
 
@@ -87,7 +83,7 @@ export default function ContactSection() {
                 className="btn btn-primary contact__email-btn"
               >
                 <Send size={16} />
-                Enviar Email
+                {t.sendEmail}
               </a>
             </motion.div>
 

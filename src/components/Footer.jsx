@@ -1,7 +1,11 @@
+import { useLanguage } from '../context/LanguageContext'
+import { translations } from '../i18n/translations'
 import './Footer.css'
 
 export default function Footer() {
   const year = new Date().getFullYear()
+  const { lang } = useLanguage()
+  const t = translations[lang].footer
 
   return (
     <footer className="footer">
@@ -14,7 +18,7 @@ export default function Footer() {
         </a>
 
         <p className="footer__copy">
-          Feito com <span className="footer__heart">♥</span> usando React & Vite — {year}
+          {t.built} <span className="footer__heart">♥</span> React & Vite — {t.by} — {year}
         </p>
 
         <p className="footer__tech">

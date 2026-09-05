@@ -1,50 +1,9 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { useLanguage } from '../context/LanguageContext'
+import { translations } from '../i18n/translations'
 import './SkillsSection.css'
-
-const categories = [
-  {
-    name: 'Frontend & Web',
-    color: '#61dafb',
-    skills: [
-      { name: 'HTML & CSS', level: 92 },
-      { name: 'JavaScript', level: 82 },
-      { name: 'React', level: 78 },
-      { name: 'Bootstrap / ASP.NET', level: 72 },
-    ],
-  },
-  {
-    name: 'Backend & Linguagens',
-    color: '#68a063',
-    skills: [
-      { name: 'Java', level: 75 },
-      { name: 'Python', level: 78 },
-      { name: 'Node.js', level: 70 },
-      { name: 'REST APIs', level: 72 },
-    ],
-  },
-  {
-    name: 'Bases de Dados',
-    color: '#f6c90e',
-    skills: [
-      { name: 'SQL Server', level: 80 },
-      { name: 'PostgreSQL / Supabase', level: 78 },
-      { name: 'MySQL', level: 75 },
-      { name: 'Modelação UML', level: 68 },
-    ],
-  },
-  {
-    name: 'Infraestrutura & Ferramentas',
-    color: '#f1502f',
-    skills: [
-      { name: 'Git & GitHub', level: 85 },
-      { name: 'Linux / Virtualização', level: 72 },
-      { name: 'Redes & CCTV', level: 70 },
-      { name: 'IA & Prompt Engineering', level: 88 },
-    ],
-  },
-]
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -59,6 +18,8 @@ const stagger = {
 export default function SkillsSection() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
+  const { lang } = useLanguage()
+  const t = translations[lang].skills
 
   return (
     <section id="competencias" className="section skills">
@@ -71,17 +32,17 @@ export default function SkillsSection() {
           animate={inView ? 'show' : 'hidden'}
         >
           <motion.p className="section-label" variants={fadeUp}>
-            O que sei fazer
+            {t.label}
           </motion.p>
           <motion.h2 className="section-title" variants={fadeUp}>
-            Competências <span className="gradient-text">Técnicas</span>
+            {t.title} <span className="gradient-text">{t.titleAccent}</span>
           </motion.h2>
           <motion.p className="section-subtitle" variants={fadeUp}>
-            Tecnologias e ferramentas com que trabalho. Sempre a aprender algo novo.
+            {t.subtitle}
           </motion.p>
 
           <div className="skills__grid">
-            {categories.map((cat) => (
+            {t.categories.map((cat) => (
               <motion.div
                 key={cat.name}
                 className="glass-card skills__card"
