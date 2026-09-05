@@ -140,8 +140,8 @@ export const translations = {
           id: 3,
           title: 'MediaMinTech',
           description:
-            'Professional website developed for MediaMinTech, focused on tech and media solutions. Built with Durable, an AI-powered website builder.',
-          tags: ['Durable', 'AI', 'Web Design', 'SEO', 'DNS', 'Domains', 'Indexing'],
+            'Professional website for MediaMinTech, a tech & media company. Initially built with HTML, CSS and JavaScript, then migrated to React. Includes SEO optimisation, DNS and domain management.',
+          tags: ['HTML', 'CSS', 'JavaScript', 'React', 'SEO', 'DNS', 'Domains', 'Indexing'],
           github: null,
           live: 'https://mediamintech.com/',
           color: '#10b981',
@@ -151,8 +151,8 @@ export const translations = {
           id: 4,
           title: 'Cantinho Curioso',
           description:
-            'Online store and institutional site for Cantinho Curioso, built with Durable. Appealing design focused on user experience to showcase products and services.',
-          tags: ['Durable', 'AI', 'E-commerce', 'Web Design', 'SEO', 'DNS', 'Domains', 'Indexing', 'Management'],
+            'Online store and institutional site for Cantinho Curioso, built with React. Appealing design focused on user experience to showcase products and services. Includes SEO, DNS and domain management.',
+          tags: ['React', 'E-commerce', 'Web Design', 'SEO', 'DNS', 'Domains', 'Indexing', 'Management'],
           github: null,
           live: 'https://www.cantinhocurioso.pt/',
           color: '#f59e0b',
@@ -318,8 +318,8 @@ export const translations = {
       facts: [
         { label: 'Cafés consumidos', value: '∞' },
         { label: 'Linhas de código', value: '20k+' },
-        { label: 'Projetos concluídos', value: '6+' },
-        { label: 'Tecnologias', value: '15+' },
+        { label: 'Projetos concluídos', value: '15+' },
+        { label: 'Tecnologias', value: '7+' },
       ],
       infoTitle: 'Informação Rápida',
       info: [
@@ -418,8 +418,8 @@ export const translations = {
           id: 3,
           title: 'MediaMinTech',
           description:
-            'Website profissional desenvolvido para a empresa MediaMinTech, com foco em soluções tecnológicas e media. Construído com Durable, plataforma de criação de sites com IA.',
-          tags: ['Durable', 'IA', 'Web Design', 'SEO', 'DNS', 'Domínios', 'Indexação'],
+            'Website profissional para a empresa MediaMinTech, focada em soluções tecnológicas e media. Inicialmente desenvolvido com HTML, CSS e JavaScript, depois migrado para React. Inclui SEO, DNS e gestão de domínios.',
+          tags: ['HTML', 'CSS', 'JavaScript', 'React', 'SEO', 'DNS', 'Domínios', 'Indexação'],
           github: null,
           live: 'https://mediamintech.com/',
           color: '#10b981',
@@ -429,8 +429,8 @@ export const translations = {
           id: 4,
           title: 'Cantinho Curioso',
           description:
-            'Loja online e site institucional para o Cantinho Curioso, desenvolvido com Durable. Design apelativo e foco na experiência do utilizador para apresentar os produtos e serviços.',
-          tags: ['Durable', 'IA', 'E-commerce', 'Web Design', 'SEO', 'DNS', 'Domínios', 'Indexação', 'Gestão'],
+            'Loja online e site institucional para o Cantinho Curioso, desenvolvido em React. Design apelativo e foco na experiência do utilizador para apresentar os produtos e serviços. Inclui SEO, DNS e gestão de domínios.',
+          tags: ['React', 'E-commerce', 'Web Design', 'SEO', 'DNS', 'Domínios', 'Indexação', 'Gestão'],
           github: null,
           live: 'https://www.cantinhocurioso.pt/',
           color: '#f59e0b',
